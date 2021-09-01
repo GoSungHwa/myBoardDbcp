@@ -15,7 +15,7 @@ import kh.my.board.board.model.vo.Board;
 /**
  * Servlet implementation class BoardWrite
  */
-@WebServlet("/boardwrite.kh")
+@WebServlet("/write.kh")
 public class BoardWriteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
