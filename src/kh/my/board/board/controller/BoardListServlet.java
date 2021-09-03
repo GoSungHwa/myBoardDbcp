@@ -69,22 +69,32 @@ public class BoardListServlet extends HttpServlet {
 		if(endPage > pageCount) endPage=pageCount;
 		
 		ArrayList<Board> volist = new BoardService().selectBoardList(startRnum,endRnum);
+		
+		//Data 전달을 위해서 request에  set
+		request.setAttribute("boardvolist", volist);
+		request.setAttribute("startPage",startPage);		
+		request.setAttribute("endPage",endPage);		
+		request.setAttribute("pageCount",pageCount);		
+		//Page 이동하면서 Data 전달함.
+		request.getRequestDispatcher("/boardlist.jsp").forward(request, response);
+		
+		
 //		if(volist.size() > 0 ) 
-		{
-			for(Board vo : volist) {
-				out.println("<p>"+vo.toString()+"</p>");
-			}
-		}
-		if(startPage>1)
-			out.println("이전  ");
-		for(int i=startPage; i<=endPage; i++) {
-			out.print(i);
-			if(i!=endPage) {
-				out.println(", ");
-			}
-		}
-		if(endPage<pageCount)
-			out.println("  다음");
+//		{
+//			for(Board vo : volist) {
+//				out.println("<p>"+vo.toString()+"</p>");
+//			}
+//		}
+//		if(startPage>1)
+//			out.println("이전  ");
+//		for(int i=startPage; i<=endPage; i++) {
+//			out.print(i);
+//			if(i!=endPage) {
+//				out.println(", ");
+//			}
+//		}
+//		if(endPage<pageCount)
+//			out.println("  다음");
 		
 		
 	}
